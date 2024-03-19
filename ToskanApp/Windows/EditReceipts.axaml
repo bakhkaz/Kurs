@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="clr-namespace:ToskanApp.Models"
+
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ToskanApp.Windows.EditReceipts"
+        Title="ToskanApp">
+      <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
+          <TextBlock 
+              Margin="20"  HorizontalAlignment="Left"
+              Text="Данные прихода"
+              FontSize="20" FontWeight="Heavy"/>
+                <TextBlock  Text="Продукт: "  VerticalAlignment="Center"/>
+                <ComboBox  x:Name="CBoxProduct" Margin="10" Width="370">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="model:Product">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>                    
+                </ComboBox>
+               
+                <TextBlock  Text="Дата изготовления пратии: "  VerticalAlignment="Center"/>
+                <DatePicker  x:Name="DPdateStart" Margin="10" />   
+                
+                <TextBlock  Text="Дата окнончания срока: "  VerticalAlignment="Center"/>
+                <DatePicker  IsEnabled="True" x:Name="DPdateEnd" Margin="10" />
+                
+                <TextBlock  Text="Кол-во едениц: "  VerticalAlignment="Center"/>
+                <NumericUpDown    x:Name="NUDcount" Margin="10" />
+
+                 
+                <TextBlock  Text="Ответсвенный: "  VerticalAlignment="Center"/>
+                <ComboBox  x:Name="CBoxEmployee" Margin="10" Width="300">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="model:Employee">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Lastname}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>                    
+                </ComboBox>
+                 
+             
+                
+                <Button  Content="Сохранить изменения" HorizontalAlignment="Center" Click="Button_OnClick"/>
+        </StackPanel>
+</Window>

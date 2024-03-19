@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="clr-namespace:ToskanApp.Models"
+
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ToskanApp.Windows.EditProduct"
+        Title="ToskanApp">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
+
+        <TextBlock 
+            Margin="20"  HorizontalAlignment="Left"
+            Text="Данные Продукта"
+            FontSize="20" FontWeight="Heavy"/>
+                <TextBlock  Text="Наименование: "  VerticalAlignment="Center"/>
+                <TextBox x:Name="TBoxName" Margin="10" Width="440" />
+
+           
+                <TextBlock  Text="Продолжительность срока годности в сутках: "  VerticalAlignment="Center"/>
+                <NumericUpDown  x:Name="NUDduration" Increment="1" Margin="10" Width="440" />
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock  Text="Кол-во: "  VerticalAlignment="Center"/>
+                        <NumericUpDown  x:Name="NUDCount" Margin="10" Width="140" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock  Text="Ед. измерения: "  VerticalAlignment="Center"/>
+                        <ComboBox  x:Name="CBoxUnit" Margin="10" Width="300">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate x:DataType="model:Unit">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>                    
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+     
+                
+                <Button  Content="Сохранить изменения" HorizontalAlignment="Center" Click="Button_OnClick"/>
+        </StackPanel>
+</Window>

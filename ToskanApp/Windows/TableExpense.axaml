@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="clr-namespace:ToskanApp.Models"
+        MinHeight="700" MinWidth="1500"
+        mc:Ignorable="d" d:DesignWidth="1500" d:DesignHeight="1500"
+        x:Class="ToskanApp.Windows.TableExpense"
+        Title="ToskanApp">
+  <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+              
+                        <TextBlock VerticalAlignment="Center">Поиск: </TextBlock>
+                        <TextBox Width="350" Text=" " x:Name="TBoxSearch" TextChanged="SearchTBox_OnTextChanged" />
+                        <Button Content="Сбросить" x:Name="ResetBtn" Click="ResetBtn_OnClick"/>
+                </StackPanel>
+                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="3" x:Name="Panel1">
+                         <TextBlock VerticalAlignment="Center">Управление: </TextBlock>
+                         <Button  HorizontalAlignment="Center" x:Name="BtnAdd" Content="Добавить" Click="BtnAdd_OnClick"/>
+                         <Button  HorizontalAlignment="Center" x:Name="BtnEdit" Content="Изменить" Click="BtnEdit_OnClick"/>
+                         <Button  HorizontalAlignment="Center" x:Name="BtnDelete" Content="Удалить" Click="BtnDelete_OnClick"/>
+                 </StackPanel>
+                <DataGrid   x:Name="DataGrid"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"  
+                            GridLinesVisibility="All"
+                            BorderThickness="4"  Height="350"
+                            x:DataType="model:AccountingForExpense">
+                        <DataGrid.Columns>
+                                <DataGridTextColumn Width="2*" Header="ID" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Width="2*" Header="Из партии" Binding="{Binding  AccoutingForReceiptsId}"/>
+                                <DataGridTextColumn Width="2*" Header="Дата расхода" Binding="{Binding Date}"/>
+                                <DataGridTextColumn Width="2*" Header="Тип расхода" Binding="{Binding TypeeName}"/>
+                                <DataGridTextColumn Width="2*" Header="Ответственный" Binding="{Binding EmployeeName}"/>
+                                <DataGridTextColumn Width="2*" Header="Кол-во" Binding="{Binding Count}"/>
+                   
+                        </DataGrid.Columns>
+                </DataGrid>
+              
+        </StackPanel>
+</Window>
